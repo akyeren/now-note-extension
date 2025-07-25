@@ -1,0 +1,77 @@
+{
+  "name": "now-note-extension",
+  "displayName": "Now Note",
+  "description": "Quickly create timestamped markdown notes with custom titles",
+  "version": "0.0.2",
+  "publisher": "zhongkai",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhongkai/now-note-extension"
+  },
+  "license": "MIT",
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "note",
+    "markdown",
+    "timestamp",
+    "diary",
+    "journal",
+    "quick note"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "now-note-extension.createNote",
+        "title": "Create New Note",
+        "category": "Now Note"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "now-note-extension.createNote",
+        "key": "ctrl+shift+n",
+        "mac": "cmd+shift+n"
+      }
+    ],
+    "configuration": {
+      "title": "Now Note",
+      "properties": {
+        "nowNote.notesDirectory": {
+          "type": "string",
+          "default": "",
+          "description": "Directory where notes will be created. If empty, will use home directory (~)"
+        },
+        "nowNote.fileExtension": {
+          "type": "string",
+          "default": "md",
+          "description": "File extension for new notes"
+        },
+        "nowNote.dateFormat": {
+          "type": "string",
+          "default": "YYYY-MM-DD_HH-mm",
+          "description": "Date format for timestamp in filename (using moment.js format)"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "16.x",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "moment": "^2.29.4"
+  }
+}
